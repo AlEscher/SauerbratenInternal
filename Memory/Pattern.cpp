@@ -51,7 +51,9 @@ char* ScanInternal(const char* pattern, char* begin, intptr_t size)
 
 	for (char* curr = begin; curr < begin + size; curr += mbi.RegionSize)
 	{
-		if (!VirtualQuery(curr, &mbi, sizeof(mbi)) || mbi.State != MEM_COMMIT || mbi.Protect == PAGE_NOACCESS) continue;
+		// Skip bad (uncommited, unaccessible) memory regions
+		if (!VirtualQuery(curr, &mbi, sizeof(mbi)) || mbi.State != MEM_COMMIT || mbi.Protect == PAGE_NOACCESS)
+			continue;
 
 		match = ScanForPattern(pattern, curr, mbi.RegionSize);
 

@@ -165,6 +165,7 @@
     <ClInclude Include="Factory\EntityFactory.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Memory\Hook.h" />
     <ClInclude Include="Memory\Mem.h" />
     <ClInclude Include="Memory\Pattern.h" />
     <ClInclude Include="pch.h" />
@@ -175,6 +176,7 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="Entities\Player.cpp" />
     <ClCompile Include="Factory\EntityFactory.cpp" />
+    <ClCompile Include="Memory\Hook.cpp" />
     <ClCompile Include="Memory\Mem.cpp" />
     <ClCompile Include="Memory\Pattern.cpp" />
     <ClCompile Include="pch.cpp">
