@@ -7,6 +7,12 @@
 
 class Player;
 
+struct EntityListItem
+{
+	char pad[0x118];
+	Player* m_pPlayer;
+};
+
 class EntityFactory
 {
 private:
@@ -18,6 +24,7 @@ public:
 	EntityFactory();
 
 	Player* GetLocalPlayer();
+	Player* GetPlayer(size_t index);
 	void* GetEntityList();
 	inline void ClearCache()
 	{

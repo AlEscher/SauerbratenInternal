@@ -34,3 +34,10 @@ void* EntityFactory::GetEntityList()
 	}
 	return m_pEntityList;
 }
+
+Player* EntityFactory::GetPlayer(size_t index)
+{
+	EntityListItem* item = reinterpret_cast<EntityListItem*>(*reinterpret_cast<uintptr_t*>(GetEntityList()) + index * 0x8);
+	
+	return item ? reinterpret_cast<Player*>(item->m_pPlayer) : nullptr;
+}
