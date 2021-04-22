@@ -17,7 +17,8 @@ class EntityFactory
 {
 private:
 	Player* m_pLocalPlayer = nullptr;
-	void* m_pEntityList = nullptr;
+	void** m_pClientList = nullptr;
+	void** m_pBotList = nullptr;
 	uintptr_t m_hProc = 0U;
 
 public:
@@ -25,10 +26,15 @@ public:
 
 	Player* GetLocalPlayer();
 	Player* GetPlayer(size_t index);
-	void* GetEntityList();
+	Player* GetBot(size_t index);
+	void** GetClientList();
+	void** GetBotList();
+	uint32_t NumOfClients();
+	uint32_t NumOfBots();
 	inline void ClearCache()
 	{
 		m_pLocalPlayer = nullptr;
-		m_pEntityList = nullptr;
+		m_pClientList = nullptr;
+		m_pBotList = nullptr;
 	}
 };

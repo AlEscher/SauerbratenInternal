@@ -66,10 +66,11 @@ DWORD WINAPI OnDllAttach(PVOID base)
 
 	while (!GetAsyncKeyState(VK_END))
 	{
-		void* entityList = entityFactory->GetEntityList();
-		// std::cout << std::hex << entityList << std::endl;
+		void* entityList = entityFactory->GetClientList();
+		void* botList = entityFactory->GetBotList();
+		std::cout << std::hex << botList << std::endl;
 
-		for (size_t i = 0; i < 12; i++)
+		for (size_t i = 0; i < entityFactory->NumOfClients(); i++)
 		{
 			Player* player = entityFactory->GetPlayer(i);
 			if (player)
@@ -78,6 +79,20 @@ DWORD WINAPI OnDllAttach(PVOID base)
 			}
 			else
 			{
+				// We reached the end of the list
+				break;
+			}
+		}
+		for (size_t i = 0; i < entityFactory->NumOfBots(); i++)
+		{
+			Player* player = entityFactory->GetBot(i);
+			if (player)
+			{
+				std::cout << std::dec << player->health << std::endl;
+			}
+			else
+			{
+				// We reached the end of the list
 				break;
 			}
 		}
